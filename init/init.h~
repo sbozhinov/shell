@@ -1,0 +1,10 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "./linkedlist/listUtils.h"
+
+void initFromRCFile(FILE * rcFile, LinkedList **aliasList, LinkedList **histList, char **pathVarName);
+
+FILE *openShellFiles(int *success, int mode, char *filename);
+
+void sillyInit(LinkedList **aliasList, LinkedList **histList, char **pathVarName) 

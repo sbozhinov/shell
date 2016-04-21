@@ -1,0 +1,79 @@
+#include "linkedList.h"
+
+
+
+LinkedList * linkedList()
+{
+	LinkedList *theList = calloc(1,sizeof(LinkedList));
+	theList->head=(Node*)calloc(1,sizeof(Node));
+    theList->size = 0;
+    return theList;
+}
+
+void addLast(LinkedList * theList, Node * nn)
+{
+
+    Node *q = theList->head;
+
+	  if (theList->size == 0)
+	  {
+		 		        q->next = nn;
+		 		        nn->prev = q;
+		 		        theList->size++;
+	  }
+	  else
+	  {
+	      while(q->next!=NULL)
+	      {
+	        q=q->next;
+	      }
+	      q->next = nn;
+	      	  nn->next = NULL;
+	           nn->prev= q;
+	           theList->size++;
+	  }
+
+
+}
+
+void addFirst(LinkedList * theList, Node * nn)
+{
+
+
+}
+
+void removeItem(LinkedList * theList, Node * nn, void (*removeData)(void *), int (*compare)(const void *, const void *))
+{
+
+}
+
+void clearList(LinkedList * theList, void (*removeData)(void *))
+{
+	Node *temp ;
+
+
+	while ((temp = theList->head) != NULL) { // set curr to head, stop if list empty.
+		theList->head = theList->head->next;          // advance head to next element.
+		removeData(temp->data);
+	    free (temp);                // delete saved pointer.
+	}
+
+}
+
+void printList(const LinkedList * theList, void (*convertData)(void *))
+{
+	     Node *temp =theList->head;
+
+
+	     if(temp==NULL)
+	      {
+	         printf("List is Empty");
+	      }
+             while(temp->next !=NULL){
+            	 temp = temp->next;
+             	 convertData(temp->data);
+             }
+	     free(temp);
+
+}
+
